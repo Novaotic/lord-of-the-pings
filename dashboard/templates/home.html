@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lord of the Pings - Dashboard</title>
+  <style>
+    body { font-family: Arial; padding: 2rem; background: #f2f2f2; }
+    h1 { color: #333; }
+    table { width: 100%; background: white; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #ddd; }
+    .ok { color: green; }
+    .fail { color: red; }
+    .status {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.status-running {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-paused {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-offline {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+  </style>
+</head>
+<body>
+  <h1>🧭 Lord of the Pings</h1>
+    <div id="agent-status">
+    <p><strong>Agent Status:</strong> {{ agent_status }}</p>
+    <span class="status status-{{ status_color }}">{{ agent_status }}</span>
+    </div>
+  
+  <form action="{{ url_for('toggle_agent') }}" method="POST">
+        <button type="submit">
+            {% if agent_status.startswith('running') %}
+      ⏸️ Pause Agent
+    {% else %}
+      ▶️ Start Agent
+    {% endif %}
+        </button>
+    </form>
+
+
+  <h2>Current Servers</h2>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Last Ping</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for server in servers %}
+  <tr>
+    <td>{{ server.name }}</td>
+    <td class="{% if server.ping_result %}
+              {{ 'ok' if server.ping_result.is_successful else 'fail' }}
+                {% endif %}">
+                <!-- DEBUG -->
+<!-- Success: {{ server.ping_result.is_successful }} -->
+                {% if server.ping_result %}
+                {{ '✅' if server.ping_result.is_successful else '❌' }}
+                {% else %}
+                —
+                {% endif %}
+</td>
+
+    <td>
+      {% if server.ping_logs %}
+        {{ server.ping_logs[-1].timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+      {% else %}
+        —
+      {% endif %}
+    </td>
+    <td>
+      <a href="{{ url_for('edit_server', server_id=server.id) }}">✏️</a>
+      <form method="POST"
+            action="{{ url_for('delete_server', server_id=server.id) }}"
+            style="display:inline;"
+            onsubmit="return confirm('Delete this server?');">
+        <button type="submit" style="background:none; border:none; color:red; cursor:pointer;">
+          🗑️
+        </button>
+      </form>
+      
+    </td>
+  </tr>
+  {% endfor %}
+
+  <tr>
+    <td colspan="4" style="text-align: left;">
+      <a href="{{ url_for('add_server') }}">➕ Add a new server</a>
+    </td>
+  </tr>
+</table>
+
+
+  <h2>Recent Alerts</h2>
+  <ul>
+    {% for alert in alerts %}
+      <li><strong>[{{ alert.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}]</strong> 
+          {{ alert.server.name }} - {{ alert.alert_type }}: {{ alert.message }}</li>
+    {% endfor %}
+  </ul>
+
+<script>
+  const endpoint = "{{ url_for('agent_status_partial') }}";
+  setInterval(() => {
+    fetch(endpoint)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("agent-status").innerHTML = html;
+      });
+  }, 5000);
+</script>
+
+
+</body>
+</html>

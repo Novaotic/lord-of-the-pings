@@ -1,0 +1,18 @@
+<h1>Settings</h1>
+
+<form method="POST">
+  <label for="agent_status">Agent Status:</label>
+  <select name="agent_status">
+    <option value="running" {% if agent_status == 'running' %}selected{% endif %}>Running</option>
+    <option value="paused" {% if agent_status == 'paused' %}selected{% endif %}>Paused</option>
+  </select>
+  <br><br>
+
+  <label for="ping_interval">Ping Interval (sec):</label>
+  <input type="number" name="ping_interval" value="{{ ping_interval }}" min="10">
+  <br><br>
+
+  <button type="submit">💾 Save Settings</button>
+</form>
+
+<p><a href="{{ url_for('home') }}">← Back to Dashboard</a></p>

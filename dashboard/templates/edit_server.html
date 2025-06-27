@@ -1,0 +1,10 @@
+<h1>Edit Server</h1>
+<form method="POST">
+  <label>Name: <input type="text" name="name" value="{{ server.name }}" required></label><br><br>
+  <label>IP Address: <input type="text" name="ip_address" value="{{ server.ip_address }}" required></label><br><br>
+  <label>Ping Interval (Seconds): <input type="number" name="ping_interval" value="{{ server.ping_interval if server else 60 }}"></label><br><br>
+  <label>Active: <input type="checkbox" name="is_active" {% if server.is_active %}checked{% endif %}></label><br><br>
+  <button type="submit">Update</button>
+</form>
+
+<p><a href="{{ url_for('home') }}">← Back to Dashboard</a></p>

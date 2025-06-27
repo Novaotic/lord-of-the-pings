@@ -1,0 +1,124 @@
+2025-06-27 15:30:17 [INFO] BEGIN (implicit)
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("servers")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("ping_result")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("alert_logs")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("ping_logs")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("app_settings")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] COMMIT
+2025-06-27 15:30:17 [INFO] BEGIN (implicit)
+2025-06-27 15:30:17 [INFO] SELECT app_settings."key" AS app_settings_key, app_settings.value AS app_settings_value 
+FROM app_settings 
+WHERE app_settings."key" = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00207s] ('agent_last_seen', 1, 0)
+2025-06-27 15:30:17 [INFO] UPDATE app_settings SET value=? WHERE app_settings."key" = ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00057s] ('2025-06-27T20:30:17.396920', 'agent_last_seen')
+2025-06-27 15:30:17 [INFO] COMMIT
+2025-06-27 15:30:17 [INFO] BEGIN (implicit)
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("servers")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("ping_result")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("alert_logs")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("ping_logs")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] PRAGMA main.table_info("app_settings")
+2025-06-27 15:30:17 [INFO] [raw sql] ()
+2025-06-27 15:30:17 [INFO] COMMIT
+2025-06-27 15:30:17 [INFO] BEGIN (implicit)
+2025-06-27 15:30:17 [INFO] SELECT app_settings."key" AS app_settings_key, app_settings.value AS app_settings_value 
+FROM app_settings 
+WHERE app_settings."key" = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00043s] ('agent_status', 1, 0)
+2025-06-27 15:30:17 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.is_active = 1
+2025-06-27 15:30:17 [INFO] [generated in 0.00051s] ()
+2025-06-27 15:30:17 [INFO] UPDATE servers SET last_ping_time=? WHERE servers.id = ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00061s] ('2025-06-27 20:30:17.471968', 1)
+2025-06-27 15:30:17 [INFO] INSERT INTO ping_logs (server_id, timestamp, response_time, success) VALUES (?, ?, ?, ?)
+2025-06-27 15:30:17 [INFO] [generated in 0.00059s] (1, '2025-06-27 20:30:17.471968', None, 1)
+2025-06-27 15:30:17 [INFO] SELECT ping_result.id AS ping_result_id, ping_result.server_id AS ping_result_server_id, ping_result.timestamp AS ping_result_timestamp, ping_result.is_successful AS ping_result_is_successful, ping_result.latency_ms AS ping_result_latency_ms 
+FROM ping_result 
+WHERE ping_result.server_id = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00071s] (1, 1, 0)
+2025-06-27 15:30:17 [INFO] UPDATE ping_result SET timestamp=?, latency_ms=? WHERE ping_result.id = ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00054s] ('2025-06-27 20:30:17.516775', 31.0, 1)
+2025-06-27 15:30:17 [INFO] COMMIT
+2025-06-27 15:30:17 [INFO] BEGIN (implicit)
+2025-06-27 15:30:17 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:17 [INFO] [generated in 0.00052s] (1,)
+2025-06-27 15:30:17 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:17 [INFO] [cached since 0.003328s ago] (2,)
+2025-06-27 15:30:19 [INFO] UPDATE servers SET last_ping_time=? WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.878s ago] ('2025-06-27 20:30:17.471968', 2)
+2025-06-27 15:30:19 [INFO] INSERT INTO ping_logs (server_id, timestamp, response_time, success) VALUES (?, ?, ?, ?)
+2025-06-27 15:30:19 [INFO] [cached since 1.884s ago] (2, '2025-06-27 20:30:17.471968', None, 0)
+2025-06-27 15:30:19 [INFO] SELECT ping_result.id AS ping_result_id, ping_result.server_id AS ping_result_server_id, ping_result.timestamp AS ping_result_timestamp, ping_result.is_successful AS ping_result_is_successful, ping_result.latency_ms AS ping_result_latency_ms 
+FROM ping_result 
+WHERE ping_result.server_id = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:19 [INFO] [cached since 1.884s ago] (2, 1, 0)
+2025-06-27 15:30:19 [INFO] UPDATE ping_result SET timestamp=?, is_successful=?, latency_ms=? WHERE ping_result.id = ?
+2025-06-27 15:30:19 [INFO] [generated in 0.00056s] ('2025-06-27 20:30:19.399700', 0, 1829.0, 2)
+2025-06-27 15:30:19 [INFO] COMMIT
+2025-06-27 15:30:19 [INFO] BEGIN (implicit)
+2025-06-27 15:30:19 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.88s ago] (2,)
+2025-06-27 15:30:19 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.883s ago] (3,)
+2025-06-27 15:30:19 [INFO] UPDATE servers SET last_ping_time=? WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.947s ago] ('2025-06-27 20:30:17.471968', 3)
+2025-06-27 15:30:19 [INFO] INSERT INTO ping_logs (server_id, timestamp, response_time, success) VALUES (?, ?, ?, ?)
+2025-06-27 15:30:19 [INFO] [cached since 1.945s ago] (3, '2025-06-27 20:30:17.471968', None, 1)
+2025-06-27 15:30:19 [INFO] SELECT ping_result.id AS ping_result_id, ping_result.server_id AS ping_result_server_id, ping_result.timestamp AS ping_result_timestamp, ping_result.is_successful AS ping_result_is_successful, ping_result.latency_ms AS ping_result_latency_ms 
+FROM ping_result 
+WHERE ping_result.server_id = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:19 [INFO] [cached since 1.943s ago] (3, 1, 0)
+2025-06-27 15:30:19 [INFO] UPDATE ping_result SET timestamp=?, latency_ms=? WHERE ping_result.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.942s ago] ('2025-06-27 20:30:19.458831', 24.0, 3)
+2025-06-27 15:30:19 [INFO] COMMIT
+2025-06-27 15:30:19 [INFO] BEGIN (implicit)
+2025-06-27 15:30:19 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.938s ago] (3,)
+2025-06-27 15:30:19 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 1.941s ago] (4,)
+2025-06-27 15:30:19 [INFO] UPDATE servers SET last_ping_time=? WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 2.006s ago] ('2025-06-27 20:30:17.471968', 4)
+2025-06-27 15:30:19 [INFO] INSERT INTO ping_logs (server_id, timestamp, response_time, success) VALUES (?, ?, ?, ?)
+2025-06-27 15:30:19 [INFO] [cached since 2.005s ago] (4, '2025-06-27 20:30:17.471968', None, 1)
+2025-06-27 15:30:19 [INFO] SELECT ping_result.id AS ping_result_id, ping_result.server_id AS ping_result_server_id, ping_result.timestamp AS ping_result_timestamp, ping_result.is_successful AS ping_result_is_successful, ping_result.latency_ms AS ping_result_latency_ms 
+FROM ping_result 
+WHERE ping_result.server_id = ?
+ LIMIT ? OFFSET ?
+2025-06-27 15:30:19 [INFO] [cached since 2.003s ago] (4, 1, 0)
+2025-06-27 15:30:19 [INFO] UPDATE ping_result SET timestamp=?, is_successful=?, latency_ms=? WHERE ping_result.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 0.1191s ago] ('2025-06-27 20:30:19.518497', 1, 22.0, 4)
+2025-06-27 15:30:19 [INFO] COMMIT
+2025-06-27 15:30:19 [INFO] BEGIN (implicit)
+2025-06-27 15:30:19 [INFO] SELECT servers.id AS servers_id, servers.name AS servers_name, servers.ip_address AS servers_ip_address, servers.location AS servers_location, servers.ping_interval AS servers_ping_interval, servers.last_ping_time AS servers_last_ping_time, servers.is_active AS servers_is_active, servers.created_at AS servers_created_at 
+FROM servers 
+WHERE servers.id = ?
+2025-06-27 15:30:19 [INFO] [cached since 2.005s ago] (4,)
+2025-06-27 15:30:19 [INFO] ROLLBACK
