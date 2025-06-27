@@ -22,7 +22,7 @@ _A beacon was lit, and the agent answered._
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourname/lord-of-the-pings.git
+git clone https://github.com/Novaotic/lord-of-the-pings.git
 cd lord-of-the-pings
 ```
 
