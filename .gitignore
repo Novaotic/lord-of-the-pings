@@ -1,0 +1,26 @@
+cat > .gitignore << 'EOF'
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment / config
+.env
+*.sqlite3
+*.db
+
+# Logs
+logs/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+env/
+
+# Flask/Misc
+instance/
+*.pid
