@@ -65,4 +65,4 @@ You can pause or resume it via internal settings.
 MIT License (see LICENSE)
 
 ## Credits
-Crafted by me, Cody Poe, while finding new resons to bang my head on a desk.
+Crafted by me, Cody Poe, while finding new reasons to bang my head on a desk.
