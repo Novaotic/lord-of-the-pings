@@ -1,4 +1,4 @@
-# 🧙‍♂️ Lord of the Pings
+#  Lord of the Pings
 
 _A beacon was lit, and the agent answered._
 
@@ -6,18 +6,18 @@ _A beacon was lit, and the agent answered._
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🌐 ICMP ping health checks with latency tracking
-- 📦 SQLite-backed storage for all servers, logs, and last known status
-- 🧭 Live dashboard UI with ✅ / ❌ indicators to show who still walks in the land of the living
-- ⚙️ Agent that checks regularly and sleeps lightly
-- 📜 Rotating log files worthy of the archives of Minas Tirith
-- 🔩 Designed to scale and evolve—API-ready, alert-capable, and open to elvish enhancements
+-  ICMP ping health checks with latency tracking
+-  SQLite-backed storage for all servers, logs, and last known status
+-  Live dashboard UI with ✅ / ❌ indicators to show who still walks in the land of the living
+-  Agent that checks regularly and sleeps lightly
+-  Rotating log files worthy of the archives of Minas Tirith
+-  Designed to scale and evolve—API-ready, alert-capable, and open to elvish enhancements
 
 ---
 
-## 🧱 Setup
+##  Setup
 
 ### 1. Clone the Repository
 
