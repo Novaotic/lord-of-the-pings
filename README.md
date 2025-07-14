@@ -1,4 +1,4 @@
-# 🧙‍♂️ Lord of the Pings
+#  Lord of the Pings
 
 _A beacon was lit, and the agent answered._
 
@@ -6,14 +6,14 @@ _A beacon was lit, and the agent answered._
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🌐 ICMP ping health checks with latency tracking
-- 📦 SQLite-backed storage for all servers, logs, and last known status
-- 🧭 Live dashboard UI with ✅ / ❌ indicators to show who still walks in the land of the living
-- ⚙️ Agent that checks regularly and sleeps lightly
-- 📜 Rotating log files worthy of the archives of Minas Tirith
-- 🔩 Designed to scale and evolve—API-ready, alert-capable, and open to elvish enhancements
+-  ICMP ping health checks with latency tracking
+-  SQLite-backed storage for all servers, logs, and last known status
+-  Live dashboard UI with ✅ / ❌ indicators to show who still walks in the land of the living
+-  Agent that checks regularly and sleeps lightly
+-  Rotating log files worthy of the archives of Minas Tirith
+-  Designed to scale and evolve—API-ready, alert-capable, and open to elvish enhancements
 - 🎨 Modern, responsive UI with improved user experience
 - 🛡️ Robust error handling and logging
 - 📊 Real-time status updates
@@ -22,12 +22,12 @@ _A beacon was lit, and the agent answered._
 
 ---
 
-## 🧱 Setup
+##  Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourname/lord-of-the-pings.git
+git clone https://github.com/Novaotic/lord-of-the-pings.git
 cd lord-of-the-pings
 ```
 
@@ -141,7 +141,7 @@ python -m pytest tests/ -v
 MIT License (see LICENSE)
 
 ## 🎉 Credits
-Crafted by Cody Poe, while finding new reasons to bang my head on a desk. Special thanks to the open source community for inspiration and tools.
+Crafted by Cody Poe, while finding new reaasons to bang my head on a desk. Special thanks to the open source community for inspiration and tools.
 
 ---
 
