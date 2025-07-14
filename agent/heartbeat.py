@@ -26,7 +26,7 @@ def ping_host(ip_address, retries=2):
     return result  # Final failed attempt
 
 def _single_ping(ip_address):
-
+    """Perform a single ping attempt."""
     param = "-n" if platform.system().lower() == "windows" else "-c"
     cmd = ["ping", param, "1", ip_address]
 
@@ -35,5 +35,9 @@ def _single_ping(ip_address):
         subprocess.check_output(cmd, stderr=subprocess.STDOUT, timeout=3)
         duration = (time.time() - start) * 1000
         return {"success": True, "response_time": round(duration, 2)}
-    except Exception:
+    except subprocess.TimeoutExpired:
+        logging.warning(f"Ping to {ip_address} timed out")
+        return {"success": False, "response_time": None}
+    except Exception as e:
+        logging.error(f"Error pinging {ip_address}: {e}")
         return {"success": False, "response_time": None}

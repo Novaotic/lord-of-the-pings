@@ -2,21 +2,114 @@
 <html>
 <head>
   <title>Add Server - Lord of the Pings</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 2rem; 
+      background: #f2f2f2; 
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { 
+      color: #333; 
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    input[type="text"], input[type="number"], input[type="checkbox"] {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .btn {
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Add Server</h1>
+  <div class="container">
+    <h1>Add New Server</h1>
 
-  <form method="POST">
-    <label>Name: <input type="text" name="name" required></label><br><br>
-    <label>IP Address: <input type="text" name="ip_address" required></label><br><br>
-    <label>Ping Interval (Seconds): <input type="number" name="ping_interval" value="{{ server.ping_interval if server else 60 }}"></label><br><br>
-    <label>Active: <input type="checkbox" name="is_active" checked></label><br><br>
-    <button type="submit">Add Server</button>
-  </form>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      
+      <label>
+        Server Name:
+        {{ form.name(placeholder="e.g., Web Server 1") }}
+        {% if form.name.errors %}
+          <span class="error">{{ form.name.errors[0] }}</span>
+        {% endif %}
+      </label>
+      
+      <label>
+        IP Address:
+        {{ form.ip_address(placeholder="e.g., 192.168.1.100") }}
+        {% if form.ip_address.errors %}
+          <span class="error">{{ form.ip_address.errors[0] }}</span>
+        {% endif %}
+      </label>
+      
+      <label>
+        Ping Interval (Seconds):
+        {{ form.ping_interval }}
+        {% if form.ping_interval.errors %}
+          <span class="error">{{ form.ping_interval.errors[0] }}</span>
+        {% endif %}
+      </label>
+      
+      <label>
+        {{ form.is_active }} Active
+      </label>
+      
+      <button type="submit" class="btn btn-primary">Add Server</button>
+    </form>
 
-  <p><a href="{{ url_for('home') }}">← Back to Dashboard</a></p>
+    <a href="{{ url_for('home') }}" class="back-link">← Back to Dashboard</a>
+  </div>
 </body>
 </html>
-<!-- This is a simple HTML form to add a new server. It includes fields for the server name, IP address, and an active status checkbox. -->
-<!-- The form submits a POST request to the same endpoint, which is handled by the Flask route that processes the form data and adds the server to the database. -->
-<!-- The "Back to Dashboard" link allows users to return to the main dashboard page. -->
