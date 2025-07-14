@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python3 unit_tests.py ${@}
+python3 test_basic.py ${@}
